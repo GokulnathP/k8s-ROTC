@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: datadog-daemon
+
+spec:
+  selector:
+    matchLabels:
+      app: datadog-pod
+  template:
+    metadata:
+      labels:
+        app: datadog-pod
+    spec:
+      containers:
+        - name: datadog-pod
+          image: datadog/agent

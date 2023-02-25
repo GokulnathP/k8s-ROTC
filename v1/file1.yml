@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: demo1
+  name: demo2
+  namespace: rotc
+spec:
+  containers:
+  - image: alpine
+    name: demo1
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo-pod
+  template:
+    metadata:
+      labels:
+        app: mongo-pod
+    spec:
+      volumes:
+        - name: mongo-data
+          hostPath:
+            path: /home/mongo-data
+            type: DirectoryOrCreate
+      containers:
+        - name: mongo
+          image: mongo
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - mountPath: /data/db
+              name: mongo-data
+
